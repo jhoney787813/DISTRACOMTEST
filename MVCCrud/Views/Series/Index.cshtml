@@ -1,0 +1,51 @@
+﻿@model List<MVCSERIESTEST.Models.sp_GetAllSeriesUser_Result>
+@{
+    ViewBag.Title = "Mis datos Series";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row" style="text-align:right;padding:5px;">
+    <a href="~/Series/New" class="btn btn-primary">Nueva Serie</a>
+</div>
+
+<div class="row">
+    @using (Html.BeginForm("ListUser", "Series" ,FormMethod.Get ))
+    {
+      <div class="row">
+     <span>Buscar por UserName:</span> @Html.TextBox("UserName")<br />
+     <input id="Submit" type="submit" value="Buscar" />
+     </div>
+    }
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>User Name</th>
+                <th>Creation Date</th>
+                <th>Series Split</th>
+                <th></th>
+            </tr>
+            @foreach (var oElemento in Model)
+            {
+        <tr>
+            <td>@oElemento.IDSeries</td>
+            <td>@oElemento.UserName</td>
+            <td>@oElemento.CreationDate</td>
+            <td>@oElemento.SeriesSplit</td>
+            @*<td>
+                <a class="btn btn-default" href="~/Tabla/Editar/@oElemento.Id">Editar</a>
+                <a class="btn btn-danger" href="~/Tabla/Eliminar/@oElemento.Id">Eliminar</a>
+            </td>*@
+        </tr>
+
+            }
+        </table>
+    </div>
+
+</div>
+
